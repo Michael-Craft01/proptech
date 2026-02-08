@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HiMenuAlt3, HiX, HiOfficeBuilding } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 import './Navbar.css';
 
 const navLinks = [
@@ -14,6 +13,7 @@ const navLinks = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState('home');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +32,7 @@ export default function Navbar() {
         >
             <div className="navbar__container">
                 <a href="#home" className="navbar__logo">
-                    <HiOfficeBuilding className="navbar__logo-icon" />
+                    <img src="/logo.png" alt="LogicHQ" className="navbar__logo-img" />
                     <span className="navbar__logo-text">Logic<span className="gradient-text">HQ</span></span>
                 </a>
 
@@ -44,44 +44,41 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                <a href="#contact" className="navbar__cta btn-primary">
+                <a href="mailto:michaelragu@logichq.tech" className="navbar__cta btn-primary">
                     Book a Demo
                 </a>
 
+                {/* Mobile Toggle */}
                 <button
-                    className="navbar__mobile-toggle"
+                    className={`navbar__toggle ${isMobileMenuOpen ? 'active' : ''}`}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
-                    {isMobileMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
 
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        className="navbar__mobile-menu"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+            {/* Mobile Menu Overlay */}
+            <div className={`navbar__mobile ${isMobileMenuOpen ? 'active' : ''}`}>
+                {navLinks.map((link) => (
+                    <a
+                        key={link.name}
+                        href={link.href}
+                        className={`navbar__mobile-link ${activeLink === link.href.substring(1) ? 'active' : ''}`}
+                        onClick={() => {
+                            setActiveLink(link.href.substring(1));
+                            setIsMobileMenuOpen(false);
+                        }}
                     >
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="navbar__mobile-link"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                        <a href="#contact" className="btn-primary" style={{ marginTop: '1rem' }}>
-                            Book a Demo
-                        </a>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        {link.name}
+                    </a>
+                ))}
+                <a href="#contact" className="btn-primary navbar__mobile-cta" onClick={() => setIsMobileMenuOpen(false)}>
+                    Get Started
+                </a>
+            </div>
         </motion.nav>
     );
 }

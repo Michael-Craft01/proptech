@@ -1,0 +1,57 @@
+.client-logos {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.client-logos__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.client-logos__label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-xl);
+}
+
+.client-logos__grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-2xl);
+}
+
+.client-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    opacity: 0.5;
+    transition: opacity var(--transition-base);
+}
+
+.client-logo:hover {
+    opacity: 1;
+}
+
+.client-logo__icon {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-muted);
+}
+
+.client-logo__name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .client-logos__grid {
+        gap: var(--spacing-lg);
+    }
+}

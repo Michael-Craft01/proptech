@@ -1,0 +1,23 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer rounded square -->
+  <path d="M15 5 H85 Q95 5 95 15 V85 Q95 95 85 95 H15 Q5 95 5 85 V15 Q5 5 15 5 Z" 
+        stroke="#10b981" 
+        stroke-width="2" 
+        fill="none"/>
+  <!-- Inner H shape -->
+  <path d="M25 25 V45 Q25 50 30 50 H45 Q50 50 50 55 V75" 
+        stroke="#10b981" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"/>
+  <path d="M75 25 V45 Q75 50 70 50 H55 Q50 50 50 45 V25" 
+        stroke="#10b981" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"/>
+  <path d="M50 75 H70 Q75 75 75 70 V55 Q75 50 70 50" 
+        stroke="#10b981" 
+        stroke-width="2" 
+        fill="none"
+        stroke-linecap="round"/>
+</svg>

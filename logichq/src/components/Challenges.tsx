@@ -5,8 +5,7 @@ import {
     HiClock,
     HiDesktopComputer,
     HiRefresh,
-    HiGlobe,
-    HiChartBar
+    HiGlobe
 } from 'react-icons/hi';
 import './Challenges.css';
 
